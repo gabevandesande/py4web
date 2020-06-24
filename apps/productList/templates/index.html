@@ -1,0 +1,45 @@
+[[extend 'layout.html']]
+
+[[block page_menu_items]]
+<a class="navbar-item" href="[[=URL('add_product')]]">Add Product</a>
+[[end]]
+
+<section class="section">
+  <h1 class="title">Products</h1>
+  <table class="table is-striped is-fullwidth">
+    <tr>
+      <th>Id</th>
+      <th>Product Name</th>
+      <th>Product Quantity</th>
+      [[if sort == None:]]
+      <th> <a href="[[=URL('index', vars=dict(sort='asc'))]]"><i class="fa fa-sort"></i> Product Cost</a></th>
+      [[elif sort == 'asc':]]
+      <th> <a href="[[=URL('index', vars=dict(sort='desc'))]]"><i class="fa fa-sort-asc"></i> Product Cost</a></th>
+      [[else:]]
+      <th> <a href="[[=URL('index', vars=dict(sort='asc'))]]"><i class="fa fa-sort-desc"></i> Product Cost</a></th>
+      [[pass]]
+      <th>Mail Order</th>
+      <th>Creation Date</th>
+      <th></th>
+    </tr>
+    [[for row in rows:]]
+    <tr>
+      <td>[[=row.id]]</td>
+      <td>[[=row.product_name]]</td>
+      <td>[[=row.product_quantity]]</td>
+      <td>[[=row.product_cost]]</td>
+      <td>[[=row.mail_order]]</td>
+      <td>[[=row.creation_date]]</td>
+      <td>
+        <a class="button" href="[[=URL('edit_product', row.id)]]">
+          <i class="fa fa-fw fa-pencil"></i> Edit
+        </a>
+        <a class="button" href="[[=URL('delete_product', row.id, signer=url_signer)]]">
+          <i class="fa fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    [[pass]]
+  </table>
+  <a class="button is-primary" href="[[=URL('add_product')]]">Add Product</a>
+</section>

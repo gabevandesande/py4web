@@ -1,0 +1,34 @@
+[[extend 'layout.html']]
+
+<div id="vue">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        [[for img in images:]]
+        <div class="column">
+          <div class="box">
+            <div><img src="[[=img['image_url'] ]]"></div>
+            <div>
+              <!-- This is the code for the thumb rater. No change needed. -->
+              [[=img['rater'] ]]
+            </div>
+          </div>
+        </div>
+        [[pass]]
+      </div>
+    </div>
+  </section>
+</div>
+
+[[block page_scripts]]
+<!-- We import the code for the starrater.  We need to import this just
+once for all components. -->
+<script src="components/thumbrater/thumbrater.js"></script>
+<!-- We need a Vue object to be able to attach components to it. -->
+<script>
+  var app = new Vue({
+      el: "#vue",
+      data: {},
+  });
+</script>
+[[end]]

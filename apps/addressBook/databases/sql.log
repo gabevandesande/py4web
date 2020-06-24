@@ -1,0 +1,74 @@
+timestamp: 2020-04-26T19:15:26.712095
+CREATE TABLE "py4web_session"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "rkey" CHAR(512),
+    "rvalue" TEXT,
+    "expiration" INTEGER,
+    "created_on" TIMESTAMP,
+    "expires_on" TIMESTAMP
+);
+success!
+timestamp: 2020-04-26T19:15:26.715453
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512)
+);
+success!
+timestamp: 2020-04-26T19:15:26.717819
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2020-04-27T19:28:10.653792
+CREATE TABLE "product"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "product_name" CHAR(512),
+    "product_quantity" INTEGER,
+    "product_cost" DOUBLE,
+    "mail_order" CHAR(1),
+    "creation_date" TIMESTAMP
+);
+success!
+timestamp: 2020-04-27T19:43:27.441991
+CREATE TABLE "contact"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(512),
+    "last_name" CHAR(512)
+);
+success!
+timestamp: 2020-04-27T20:31:17.307180
+CREATE TABLE "person"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_email" CHAR(512)
+);
+success!
+timestamp: 2020-04-27T20:31:17.311801
+ALTER TABLE "contact" ADD "user_email" CHAR(512);
+success!
+timestamp: 2020-05-06T18:04:05.174319
+CREATE TABLE "phone_numbers"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "contact_id" INTEGER REFERENCES "contact" ("id") ON DELETE CASCADE  ,
+    "phone_number" CHAR(512),
+    "type" CHAR(512)
+);
+success!
+timestamp: 2020-05-06T19:17:42.842860
+CREATE TABLE "phone_number"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "contact_id" INTEGER REFERENCES "contact" ("id") ON DELETE CASCADE  ,
+    "phone_number" CHAR(512),
+    "type" CHAR(512)
+);
+success!
+success!
+timestamp: 2020-05-06T21:16:07.927063
+ALTER TABLE "auth_user" ADD "last_password_change" TIMESTAMP;
+success!

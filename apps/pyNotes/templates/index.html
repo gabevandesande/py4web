@@ -1,0 +1,61 @@
+[[extend 'layout.html']]
+
+<div id="vue-target">
+  <section class="section">
+    <div class="title">PyNotes</div>
+
+    <div class="level">
+      <div class="level-left">
+        <button @click="add_post" class="button">
+          <span class="icon"><i class="fa fa-plus"></i></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="columns is-multiline is-one-third">
+      <div v-for="post in posts">
+        <div class="column">
+          <div :class="post.color" class="box">
+            <div style="float:right;" v-if="post.starred">
+              <i @click="do_save(post._idx, post.color, false)" class="fa fa-star fa-2x"></i>
+            </div>
+            <div style="float:right;" v-if="!post.starred">
+              <i @click="do_save(post._idx, post.color, true)" class="fa fa-star-o fa-2x"></i>
+            </div>
+            <textarea placeholder="Title" v-model="post.title" :class="post.color" class="textarea is-size-5 has-text-weight-bold" rows="1" cols="30">{{post.title}}</textarea>
+            <textarea placeholder="Text" v-model="post.content" :class="post.color" class="textarea" rows="10" cols="40">{{post.content}}</textarea>
+            <div class="level">
+              <div class="level-left">
+                <button class="button" @click="do_delete(post._idx)">
+                  <i class="fa fa-trash fa-fw"></i>
+                </button>
+                <button @click="do_save(post._idx, post.color, post.starred)" class="button">
+                  <i class="fa fa-check-square-o fa-fw"></i></button>
+              </div>
+              <div class="level-right">
+                <button v-if="post.color!= 'has-background-red'" @click="do_save(post._idx, 'has-background-red', post.starred)" class="customButton has-background-red"></button>
+                <button v-if="post.color!= 'has-background-yellow'" @click="do_save(post._idx, 'has-background-yellow', post.starred)" class="customButton has-background-yellow"></button>
+                <button v-if="post.color!= 'has-background-purple'" @click="do_save(post._idx, 'has-background-purple', post.starred)" class="customButton has-background-purple"></button>
+                <button v-if="post.color!= 'has-background-teal'" @click="do_save(post._idx, 'has-background-teal', post.starred)" class="customButton has-background-teal"></button>
+                <button v-if="post.color!= 'has-background-blue'" @click="do_save(post._idx, 'has-background-blue', post.starred)" class="customButton has-background-blue"></button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </section>
+</div>
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+<script>
+  let posts_url = "[[=XML(posts_url)]]";
+  let delete_url = "[[=XML(delete_url)]]";
+  let user_email = "[[=XML(user_email)]]";
+  let author = "[[=XML(author)]]";
+  let current_time = "[[=XML(current_time)]]";
+</script>
+<script src="js/index.js"></script>
+[[end]]

@@ -1,0 +1,41 @@
+timestamp: 2020-04-19T14:08:50.456004
+CREATE TABLE "py4web_session"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "rkey" CHAR(512),
+    "rvalue" TEXT,
+    "expiration" INTEGER,
+    "created_on" TIMESTAMP,
+    "expires_on" TIMESTAMP
+);
+success!
+timestamp: 2020-04-19T14:08:50.459265
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512)
+);
+success!
+timestamp: 2020-04-19T14:08:50.461538
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2020-04-19T14:08:50.464382
+CREATE TABLE "product"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "product_name" CHAR(512),
+    "product_quantity" INTEGER,
+    "product_cost" DOUBLE,
+    "mail_order" CHAR(1),
+    "creation_date" TIMESTAMP
+);
+success!
+timestamp: 2020-05-06T21:16:07.959229
+ALTER TABLE "auth_user" ADD "last_password_change" TIMESTAMP;
+success!

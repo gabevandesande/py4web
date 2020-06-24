@@ -1,0 +1,76 @@
+.welcome {
+    margin-bottom: 10px;
+}
+
+.section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.input::-moz-placeholder,
+.textarea::-moz-placeholder {
+  color: rgba(54, 54, 54, 0.7);
+}
+.input::-webkit-input-placeholder,
+.textarea::-webkit-input-placeholder {
+  color: rgba(54, 54, 54, 0.7);
+}
+.input:-moz-placeholder,
+.textarea:-moz-placeholder {
+  color: rgba(54, 54, 54, 0.7);
+}
+.input:-ms-input-placeholder,
+.textarea:-ms-input-placeholder {
+  color: rgba(54, 54, 54, 0.7);
+}
+
+.textarea {
+  border: none!important;
+  box-shadow: none!important;
+  resize:none;
+
+}
+.button{
+  border: 1px solid #4a4a4a !important;
+
+}
+
+button:focus{
+  outline:0;
+}
+
+button:hover{
+  transition: border-color .2s;
+  cursor:pointer;
+  border: 1px solid white !important;
+}
+
+.customButton{
+  border: 1px solid #4a4a4a;
+  border-radius:10px;
+  padding:10px;
+}
+.customButton:hover{
+  transition: border-color .2s;
+  border-color:white !important;
+}
+
+.fa-star, .fa-star-o:hover{
+  cursor:pointer;
+}
+
+.has-background-red{
+  background-color: #FEBCC8
+}
+.has-background-yellow{
+  background-color: #FFFFD8
+}
+.has-background-purple{
+  background-color: #EAEBFF
+}
+.has-background-teal{
+  background-color: #E0FEFE
+}
+.has-background-blue{
+  background-color: #D3EEFF
+}

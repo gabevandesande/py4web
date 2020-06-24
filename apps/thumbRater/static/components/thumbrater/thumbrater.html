@@ -1,0 +1,17 @@
+<span v-on:mouseout="thumbs_out">
+    <span v-on:click="set_rating(idx)"
+          v-for="idx in thumb_indices">
+          <span v-if="rating_assigned==1">
+            <i v-if="idx == 1" class="fa fa-thumbs-up"></i>
+            <i v-if="idx == 2" class="fa fa-thumbs-o-down"></i>
+          </span>
+          <span v-else-if="rating_assigned==2">
+            <i v-if="idx == 1" class="fa fa-thumbs-o-up"></i>
+            <i v-if="idx == 2" class="fa fa-thumbs-down"></i>
+          </span>
+          <span v-else="rating_assigned==0" >
+            <i v-if="idx == 1" class="fa fa-thumbs-o-up"></i>
+            <i v-if="idx == 2" class="fa fa-thumbs-o-down"></i>
+          </span>
+    </span>
+</span>

@@ -1,0 +1,24 @@
+timestamp: 2020-04-19T14:08:50.715839
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512)
+);
+success!
+timestamp: 2020-04-19T14:08:50.718448
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "path" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2020-05-06T21:16:08.373579
+ALTER TABLE "auth_user" ADD "last_password_change" TIMESTAMP;
+timestamp: 2020-05-06T21:16:08.375511
+ALTER TABLE "auth_user" ADD "past_passwords_hash" TEXT;
+success!
